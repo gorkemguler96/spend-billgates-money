@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import Header from './components/Header'
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement } from './redux/slice/productsSlice'
+import Money from "./components/Money";
+import Products from "./components/Products";
 
 function App() {
+
+    const count = useSelector((state) => state.products.value)
+    const dispatch = useDispatch()
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={"container"}>
+        <Header/>
+        <Money/>
+        <Products/>
     </div>
   );
 }
