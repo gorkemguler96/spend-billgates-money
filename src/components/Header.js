@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.css'
+import {useSelector} from "react-redux";
 
 function Header(props) {
     return (

@@ -1,83 +1,47 @@
 import React from 'react';
 import './styles.css'
 import { Card, Button, Input, Row, Col  } from 'antd';
+import {useDispatch, useSelector} from "react-redux";
+import { decrement, increment, incrementByAmount } from '../redux/slice/productsSlice'
+
 
 function Products(props) {
 
     const { Meta } = Card;
+    const products = useSelector((state) => state.products.items)
+    const dispatch = useDispatch()
+
+    const arttir = (e) =>{
+      dispatch(increment(e))
+        // console.log(temp.payload.amount+1)
+    }
 
     return (
         <div className={"products"}>
             <>
                 <Row gutter={16}>
-                    <Col span={6}>
-                        <Card
-                            hoverable
-                            cover={<img alt="example" src="https://neal.fun/spend/images/big-mac.jpg" />}
-                        >
-                            <span className={"productsTitle"}>
-                                <div>Big Mac</div>
-                                <div>$2</div>
-                            </span>
-                            <span className={"productsBtn"}>
-                                <Button type="danger">Sell</Button>
-                                <Input/>
-                                <Button  type="primary">Buy</Button>
+                    {products.map((item)=>(
+                        <Col key={item.id} span={6}>
+                            <Card
+                                hoverable
+                                cover={<img alt="example" src={item.image} />}
+                            >
+                                <span className={"productsTitle"}>
+                                    <div>{item.title}</div>
+                                    <div>${item.price}</div>
+                                </span>
 
-                            </span>
-                        </Card>
-                    </Col>
-                    <Col span={6}>
-                        <Card
-                            hoverable
-                            cover={<img alt="example" src="https://neal.fun/spend/images/big-mac.jpg" />}
-                        >
-                            <span className={"productsTitle"}>
-                                <div>Big Mac</div>
-                                <div>$2</div>
-                            </span>
-                            <span className={"productsBtn"}>
-                                <Button type="danger">Sell</Button>
-                                <Input/>
-                                <Button  type="primary">Buy</Button>
+                                <span className={"productsBtn"}>
+                                    <Button type="danger">Sell</Button>
+                                    <Input />
+                                    {item.amount}
+                                    <Button onClick={()=>arttir(item)} type="primary">Buy</Button>
+                                </span>
 
-                            </span>
-                        </Card>
-                    </Col>
-                    <Col span={6}>
-                        <Card
-                            hoverable
-                            cover={<img alt="example" src="https://neal.fun/spend/images/big-mac.jpg" />}
-                        >
-                            <span className={"productsTitle"}>
-                                <div>Big Mac</div>
-                                <div>$2</div>
-                            </span>
-                            <span className={"productsBtn"}>
-                                <Button type="danger">Sell</Button>
-                                <Input/>
-                                <Button  type="primary">Buy</Button>
+                            </Card>
+                        </Col>
+                    ))}
 
-                            </span>
-                        </Card>
-                    </Col>
-                    <Col span={6}>
-                        <Card
-                            hoverable
-                            cover={<img alt="example" src="https://neal.fun/spend/images/big-mac.jpg" />}
-                        >
-                            <span className={"productsTitle"}>
-                                <div>Big Mac</div>
-                                <div>$2</div>
-                            </span>
-                            <span className={"productsBtn"}>
-                                <Button type="danger">Sell</Button>
-                                <Input/>
-                                <Button  type="primary">Buy</Button>
-
-                            </span>
-                        </Card>
-                    </Col>
                 </Row>
             </>
         </div>
