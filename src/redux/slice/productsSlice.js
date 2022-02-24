@@ -320,20 +320,47 @@ export const productsSlice = createSlice({
                amount:0
            },
        ],
-        money:100000000000
+        money:100000000000,
+        total:0
     },
     reducers: {
         increment: (state,action) =>{
-            // const {id} = action.payload
-            // const temp = state.items.find((item)=>item.id !== id)
-            // console.log(temp)
+            const { id } = action.payload
+            const amount = state.items.map((a)=> {
+                if(a.id === id){
+                    a.amount++
+                    const money = state.money - (a.price)
+                    state.money =(money)
+                    const total = 100000000000 - state.money
+                    state.total = total
+                }
+                return a
+            })
+
+
 
         },
         decrement: (state,action) =>{
-            state.items.amount -=1
+            const { id } = action.payload
+            const amount = state.items.map((a)=> {
+                if(a.id === id && a.amount>0){
+                    a.amount--
+                    const money = state.money + (a.price)
+                    state.money =(money)
+                    const total = 100000000000 - state.money
+                    state.total = total
+                }
+                return a
+            })
         },
         incrementByAmount : (state,action)=>{
-            state.items.amount += action.payload
+            const { id } = action.payload
+            const input = state.items.map((a)=>{
+                if(a.id === id && a.amount >0){
+                   const deneme= a.amount += action.payload
+                }
+                return a
+            })
         }
     },
 })

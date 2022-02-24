@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { decrement } from './redux/slice/productsSlice'
 import Money from "./components/Money";
 import Products from "./components/Products";
+import Total from './components/Total'
 
 function App() {
 
@@ -13,11 +14,14 @@ function App() {
 
 
   return (
-    <div className={"container"}>
-        <Header/>
-        <Money/>
-        <Products/>
-    </div>
+      <div className={"body"}>
+        <div className={"container"}>
+            <Header/>
+            <Money />
+            <Products/>
+            <Total />
+        </div>
+      </div>
   );
 }
 

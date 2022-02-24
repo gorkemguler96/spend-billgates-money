@@ -16,3 +16,39 @@ code {
   margin-right: auto;
   margin-left: auto;
 }
+
+.totalStyle {
+  text-align: center;
+  padding-bottom: 50px;
+  padding-top: 30px;
+  background: white;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.totalWidth {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.totalItem {
+  display: flex;
+  transition-duration: 3s ;
+
+}
+.a{
+  margin-left: 10px;
+  width: 90%;
+}
+.b{
+  margin-left: 60px;
+}
+.c{
+  margin-left: 50px;
+  width: 100%;
+  color: rgb(25, 183, 25);
+}
+
+.body {
+  background: #f1f2f6;
+}
