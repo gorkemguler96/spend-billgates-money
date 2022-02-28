@@ -7,7 +7,6 @@ function Money(props) {
 
     const money = useSelector((state) => state.products.money)
     const result  = (money).toLocaleString('en-US', )
-    console.log(result)
 
 
     return (

@@ -11,9 +11,10 @@ function Products(props) {
     const products = useSelector((state) => state.products.items)
     const money = useSelector((state) => state.products.money)
     const dispatch = useDispatch()
-    const [tempAmount,setTempAmount] = useState(0)
-
-
+    const [amount,setAmount] = useState(0)
+    const inputArttirma = (e,item) => {
+       dispatch(setAmount(incrementByAmount(e)))
+    }
 
     return (
         <div className={"products"}>
@@ -38,7 +39,7 @@ function Products(props) {
 
                                     {/*------------------------İNPUT-----------------------------------------*/}
 
-                                    <Input onChange={() => dispatch(incrementByAmount(item))} placeholder={item.amount} />
+                                    <Input  value={item.amount} />
 
                                     {/*-------------------------BUY BUTTON-----------------------------------*/}
 

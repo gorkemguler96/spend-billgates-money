@@ -357,7 +357,7 @@ export const productsSlice = createSlice({
             const { id } = action.payload
             const input = state.items.map((a)=>{
                 if(a.id === id && a.amount >0){
-                   const deneme= a.amount += action.payload
+                    a.amount = action.payload
                 }
                 return a
             })
